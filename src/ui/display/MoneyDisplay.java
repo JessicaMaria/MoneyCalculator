@@ -8,7 +8,7 @@ public class MoneyDisplay {
 
     public MoneyDisplay(Money money) {
         this.money = money;
-        System.out.println(money.getAmount());
+        System.out.println(money.getAmount()+" "+money.getCurrency().getSymbol());
     }
     
 }

@@ -4,6 +4,8 @@ import model.CurrencySet;
 import model.Exchange;
 import model.ExchangeRate;
 import model.Money;
+import persistance.ExchangeRateLoader;
+import process.Exchanger;
 import ui.dialog.ExchangeDialog;
 import ui.display.MoneyDisplay;
 
@@ -18,8 +20,8 @@ public class ExchangeCommand {
     public void execute(){
         Exchange exchange = readExchange();
         ExchangeRate rate = readExchangeRate(exchange);
-        Money money = exchange(exchange.getMoney(),rate);
-        MoneyDisplay moneyDisplay = new MoneyDisplay(money);
+        Money money = calculateExchange(exchange,rate);
+        displayMoney(money);
     }
 
     private Exchange readExchange() {
@@ -29,12 +31,16 @@ public class ExchangeCommand {
    }
 
     private ExchangeRate readExchangeRate(Exchange exchange) {
-        ExchangeRate rate = null;
+        ExchangeRate rate = new ExchangeRateLoader().load(exchange.getMoney().getCurrency(),exchange.getCurrency());
         return rate;
     }
 
-    private Money exchange(Money money, ExchangeRate rate) {
-        Money money2 = null;
-        return money2;
+    private Money calculateExchange(Exchange exchange,ExchangeRate rate) {
+        return new Exchanger().exchange(exchange.getMoney(),rate);
     }
+
+    private void displayMoney(Money money) {
+        MoneyDisplay moneyDisplay = new MoneyDisplay(money);
+    }
+
 }

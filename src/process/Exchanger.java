@@ -5,8 +5,11 @@ import model.Money;
 
 public class Exchanger {
 
-    public Money exchage(Money money, ExchangeRate exchangeRate){
-        double amount = money.getAmount()*exchangeRate.getRate();
-        return new Money(amount,exchangeRate.getTo());
+    public Money exchange(Money money, ExchangeRate exchangeRate){
+        return new Money(calculateAmount(money,exchangeRate),exchangeRate.getTo());
+    }
+
+    private double calculateAmount(Money money, ExchangeRate exchangeRate) {
+        return money.getAmount()*exchangeRate.getRate();
     }
 }

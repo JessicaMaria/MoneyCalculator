@@ -2,16 +2,16 @@ package model;
 
 public class Money {
     
-    private final Number money;
+    private final double amount;
     private final Currency currency;
 
-    public Money(Number money, Currency currency) {
-        this.money = money;
+    public Money(double amount, Currency currency) {
+        this.amount = amount;
         this.currency = currency;
     }
 
-    public Number getMoney() {
-        return money;
+    public double getAmount() {
+        return amount;
     }
 
     public Currency getCurrency() {

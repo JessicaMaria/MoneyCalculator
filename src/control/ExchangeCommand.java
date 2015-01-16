@@ -7,6 +7,7 @@ import model.Money;
 import persistance.ExchangeRateLoader;
 import process.Exchanger;
 import ui.dialog.ExchangeDialog;
+import ui.dialog.SwingExchangeDialog;
 import ui.display.MoneyDisplay;
 
 public class ExchangeCommand {
@@ -25,7 +26,7 @@ public class ExchangeCommand {
     }
 
     private Exchange readExchange() {
-        ExchangeDialog dialog = new ExchangeDialog(this.currencySet);
+        ExchangeDialog dialog = new SwingExchangeDialog(this.currencySet);
         dialog.execute();
         return dialog.getExchange();
    }

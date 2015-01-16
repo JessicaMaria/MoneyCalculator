@@ -6,6 +6,6 @@ import model.ExchangeRate;
 public class ExchangeRateLoader {
 
     public ExchangeRate load(Currency from, Currency to){
-        return new ExchangeRate(from,to,2); 
+        return new ExchangeRate(from,to,(double) 2); 
     }
 }
